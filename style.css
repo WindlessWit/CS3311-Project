@@ -13,20 +13,20 @@
     --muted: #666666;
     --brand: #ffb400;
     --nav: #444444;
-    --header: #2d2d2d;
+    --header: #e8afaf;
     --footer: #2d2d2d;
 }
 
 /* Dark mode */
 .theme-dark {
-    --bg: #111416;
+    --bg: #393c3d;
     --panel: #161a1d;
     --text: #e7e7e7;
     --muted: #a3a3a3;
     --brand: #ffb400;
     --nav: #1f2326;
-    --header: #0e1113;
-    --footer: #0e1113;
+    --header: #393c3d;
+    --footer: #393c3d;
 }
 
 /* Base Layout */

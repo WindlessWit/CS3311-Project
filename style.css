@@ -1,11 +1,11 @@
-/* ===== Base Reset ===== */
+/* Base Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== Theme Variables ===== */
+/* Theme Variables */
 :root {
     --bg: #f8f8f8;
     --panel: #ffffff;
@@ -29,7 +29,7 @@
     --footer: #0e1113;
 }
 
-/* ===== Base Layout ===== */
+/* Base Layout */
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -37,7 +37,7 @@ body {
     color: var(--text);
 }
 
-/* ===== Header & Nav ===== */
+/* Header & Nav */
 header {
     background: var(--header);
     color: #fff;
@@ -64,7 +64,7 @@ nav a:hover {
     color: var(--brand);
 }
 
-/* ===== Main Content ===== */
+/* Main Content */
 main {
     background: var(--panel);
     max-width: 900px;
@@ -86,7 +86,7 @@ li {
     margin-bottom: 1rem;
 }
 
-/* ===== Forms ===== */
+/* Forms */
 form {
     margin-top: 1rem;
 }
@@ -115,7 +115,7 @@ button:hover {
     background-color: #e0a000;
 }
 
-/* ===== Footer ===== */
+/* Footer */
 footer {
     background: var(--footer);
     color: #fff;
@@ -124,7 +124,7 @@ footer {
     margin-top: 2rem;
 }
 
-/* ===== Theme Slider Toggle ===== */
+/* Theme Slider Toggle */
 .theme-toggle {
     display: flex;
     justify-content: flex-end;
@@ -171,4 +171,5 @@ input:checked+.slider {
 
 input:checked+.slider::before {
     transform: translateX(24px);
+
 }

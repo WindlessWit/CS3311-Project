@@ -19,7 +19,10 @@ $sql = "INSERT INTO quote_requests (name, email, phone, service, details)
 VALUES ('$name', '$email', '$phone', '$service', '$details')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Thank you! Your request has been submitted.";
+    echo "<script>
+        alert('Thank you! Your request has been submitted.');
+        window.history.back();
+      </script>";
 } else {
     echo "Error: " . $conn->error;
 }

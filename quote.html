@@ -5,56 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request a Quote - Construction Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <h1>Construction Solutions</h1>
-        <p>Reliable, Honest, and Quality Work You Can Trust</p>
-        <div class="theme-toggle">
-            <span class="toggle-label">Theme:</span>
-            <label class="switch">
-                <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
-                <span class="slider"></span>
-            </label>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-bar">
+                <div class="branding">
+                    <h1>Construction Solutions</h1>
+                    <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
+                </div>
+                <div class="theme-toggle">
+                    <span class="toggle-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-cta">
+                <a class="btn primary" href="quote.html">Request a Quote</a>
+                <a class="btn secondary" href="projects.html">View Projects</a>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="quote.html">Get a Quote</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a class="active" href="quote.html">Get a Quote</a>
+        </div>
     </nav>
 
     <main>
-        <h2>Request a Quote</h2>
-        <p>Please fill out the form below to request a free quote. We’ll respond as soon as possible.</p>
+        <section class="panel">
+            <h2>Request a Quote</h2>
+            <p>Please fill out the form below to request a free quote. We’ll respond as soon as possible.</p>
+            <form action="submit.php" method="post" class="form-grid">
+                <div class="field">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="field">
+                    <label for="service">Service Needed</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., Kitchen Remodel">
+                </div>
+                <div class="field">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="details" rows="5"></textarea>
+                </div>
+                <button class="btn primary" type="submit">Submit Quote Request</button>
+            </form>
+        </section>
 
-        <form action="submit.php" method="post">
-            <label for="name">Full Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone"><br><br>
-
-            <label for="service">Service Needed:</label><br>
-            <input type="text" id="service" name="service" placeholder="e.g., Kitchen Remodel"><br><br>
-
-            <label for="details">Project Details:</label><br>
-            <textarea id="details" name="details" rows="5"></textarea><br><br>
-
-            <button type="submit">Submit Quote Request</button>
-        </form>
+        <section class="panel">
+            <h3>What happens next?</h3>
+            <p>
+                After reviewing your request, a project specialist will reach out to schedule a consultation, gather
+                additional details, and provide a customized proposal for your build.
+            </p>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

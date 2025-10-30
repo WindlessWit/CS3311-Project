@@ -5,48 +5,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Construction Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <h1>Construction Solutions</h1>
-        <p>Reliable, Honest, and Quality Work You Can Trust</p>
-        <div class="theme-toggle">
-            <span class="toggle-label">Theme:</span>
-            <label class="switch">
-                <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
-                <span class="slider"></span>
-            </label>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-bar">
+                <div class="branding">
+                    <h1>Construction Solutions</h1>
+                    <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
+                </div>
+                <div class="theme-toggle">
+                    <span class="toggle-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-cta">
+                <a class="btn primary" href="quote.html">Request a Quote</a>
+                <a class="btn secondary" href="projects.html">View Projects</a>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="quote.html">Get a Quote</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html">Home</a>
+            <a class="active" href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="quote.html">Get a Quote</a>
+        </div>
     </nav>
 
     <main>
-        <h2>Our Services</h2>
-        <p>
-            We offer a full range of construction services designed to meet the needs of homeowners, businesses, and
-            developers.
-        </p>
+        <section class="panel intro">
+            <h2>Our Services</h2>
+            <p>
+                We offer a full range of construction services designed to meet the needs of homeowners, businesses, and
+                developers. Every engagement begins with a detailed consultation so we can understand your goals and
+                deliver a tailored plan.
+            </p>
+        </section>
 
-        <ul>
-            <li>Residential Construction and Remodeling</li>
-            <li>Commercial Building and Tenant Improvements</li>
-            <li>Roofing, Siding, and Exterior Work</li>
-            <li>Concrete, Driveways, and Foundations</li>
-            <li>Custom Carpentry and Deck Building</li>
-        </ul>
+        <section class="panel">
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Residential Construction</h3>
+                    <p>Whole-home remodels, additions, and renovations that honor your vision and budget.</p>
+                </article>
+                <article class="card">
+                    <h3>Commercial Building</h3>
+                    <p>Modern, efficient spaces for offices, retail, and tenant improvements with minimal downtime.</p>
+                </article>
+                <article class="card">
+                    <h3>Exterior Enhancements</h3>
+                    <p>Roofing, siding, and exterior upgrades that boost curb appeal and long-term protection.</p>
+                </article>
+                <article class="card">
+                    <h3>Concrete & Foundations</h3>
+                    <p>Driveways, foundations, and structural concrete poured with precision and durability.</p>
+                </article>
+                <article class="card">
+                    <h3>Custom Carpentry</h3>
+                    <p>Handcrafted decks, built-ins, and specialty woodwork tailored to your space.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Need something custom?</h3>
+            <p>
+                From intricate architectural details to comprehensive design-build packages, our team can partner with
+                your architects and designers to bring complex ideas to life.
+            </p>
+            <a class="btn primary" href="quote.html">Schedule a Consultation</a>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

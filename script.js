@@ -3,7 +3,7 @@ const THEME_COOKIE = "siteTheme";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; //1 year
 
 const AUTH_STORAGE_KEY = "employeeAuth";
-const ACCESS_CODE = "buildsafe";
+const ACCESS_CODE = "classtest";
 
 let authOverlayEl = null;
 

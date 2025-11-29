@@ -123,9 +123,38 @@ a:hover {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.nav-auth {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.95rem;
+}
+
+.auth-status {
+    color: #e5e7eb;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.35rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .site-nav a {
@@ -146,6 +175,71 @@ a:hover {
 .site-nav a.active {
     background: var(--brand);
     color: #111827;
+}
+
+.auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 50;
+}
+
+.auth-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.auth-modal {
+    background: var(--surface);
+    color: var(--text);
+    width: min(520px, 100%);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 28px 60px rgba(15, 23, 42, 0.35);
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.auth-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.auth-copy {
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+.auth-feedback {
+    margin: 0.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.auth-feedback.error {
+    color: #dc2626;
+}
+
+.auth-feedback.success {
+    color: #059669;
 }
 
 main {
@@ -341,6 +435,34 @@ form button.btn {
     color: var(--text);
 }
 
+.alert {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 122, 24, 0.12);
+    border: 1px solid rgba(255, 122, 24, 0.3);
+    color: var(--text);
+}
+
+.employee-panel .employee-panel-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.employee-actions {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+}
+
+.employee-actions .hint {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
 .site-footer {
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 1) 100%);
     color: #e5e7eb;
@@ -430,6 +552,20 @@ input:checked + .slider::before {
 
     .site-nav {
         top: -1px;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
     }
 }
 

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Construction Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-bar">
+                <div class="branding">
+                    <h1>Construction Solutions</h1>
+                    <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
+                </div>
+                <div class="theme-toggle">
+                    <span class="toggle-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-cta">
+                <a class="btn primary" href="quote.html">Request a Quote</a>
+                <a class="btn secondary" href="projects.html">View Projects</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="quote.html">Get a Quote</a>
+                <a class="employee-link active" href="employee-dashboard.html" data-auth-link>Employee Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <span class="auth-status" data-auth-status hidden>Signed in</span>
+                <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
+                <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" type="button" data-close-auth aria-label="Close sign in form">&times;</button>
+            <h3 id="authTitle">Employee Sign In</h3>
+            <p class="auth-copy">Access schedules, punch lists, and updates from the employee dashboard.</p>
+            <form id="authForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="authEmail">Work Email</label>
+                        <input type="email" id="authEmail" name="email" autocomplete="username"
+                            placeholder="you@constructionsolutions.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="authCode">Access Code</label>
+                        <input type="password" id="authCode" name="accessCode" autocomplete="current-password"
+                            placeholder="Enter your access code" required>
+                        <p class="form-help">Demo access code: <strong>buildsafe</strong></p>
+                    </div>
+                </div>
+                <p class="auth-feedback" data-auth-feedback role="alert"></p>
+                <button class="btn primary" type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="panel intro">
+            <h2>Employee Dashboard</h2>
+            <p>
+                Welcome to your internal workspace. Track today's assignments, check upcoming milestones, and quickly get
+                to the tools you need in the field.
+            </p>
+            <div class="alert" data-auth-required>
+                <strong>Heads up:</strong> This dashboard is optimized for signed-in team members. Use the sign-in button
+                above to unlock links and personalize your view.
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Site Checklist</h3>
+                    <p>Walkthrough-ready checklist for today's active sites.</p>
+                    <ul class="detail-list">
+                        <li><strong>Safety</strong><span>Daily tailboard talk completed?</span></li>
+                        <li><strong>Materials</strong><span>Delivery verification and storage check</span></li>
+                        <li><strong>Quality</strong><span>First-work inspection signoff</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Team Updates</h3>
+                    <p>Recap of who is on-site and what they are focusing on.</p>
+                    <ul class="detail-list">
+                        <li><strong>North Build</strong><span>Framing crew finishing level 2</span></li>
+                        <li><strong>Downtown TI</strong><span>Electrical rough-in starts at 9 AM</span></li>
+                        <li><strong>Shop</strong><span>Prefab window trims for Friday loadout</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Quick Links</h3>
+                    <p>Jump straight to the resources you need most often.</p>
+                    <ul class="detail-list">
+                        <li><strong>Timesheets</strong><span>Submit end-of-day hours</span></li>
+                        <li><strong>Tool Crib</strong><span>Reserve specialty equipment</span></li>
+                        <li><strong>Incident Log</strong><span>Report safety observations</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

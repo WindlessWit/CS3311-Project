@@ -38,13 +38,46 @@
 
     <nav class="site-nav">
         <div class="nav-inner">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a class="active" href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-            <a href="quote.html">Get a Quote</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a class="active" href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="quote.html">Get a Quote</a>
+                <a class="employee-link" href="employee-dashboard.html" data-auth-link hidden>Employee Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <span class="auth-status" data-auth-status hidden>Signed in</span>
+                <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
+                <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
+            </div>
         </div>
     </nav>
+
+    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" type="button" data-close-auth aria-label="Close sign in form">&times;</button>
+            <h3 id="authTitle">Employee Sign In</h3>
+            <p class="auth-copy">Access schedules, punch lists, and updates from the employee dashboard.</p>
+            <form id="authForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="authEmail">Work Email</label>
+                        <input type="email" id="authEmail" name="email" autocomplete="username"
+                            placeholder="you@constructionsolutions.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="authCode">Access Code</label>
+                        <input type="password" id="authCode" name="accessCode" autocomplete="current-password"
+                            placeholder="Enter your access code" required>
+                        <p class="form-help">Demo access code: <strong>buildsafe</strong></p>
+                    </div>
+                </div>
+                <p class="auth-feedback" data-auth-feedback role="alert"></p>
+                <button class="btn primary" type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
 
     <main>
         <section class="panel intro">

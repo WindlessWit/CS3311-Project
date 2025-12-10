@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Construction Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-bar">
+                <div class="branding">
+                    <img src="constructionSolutionsLogoT.png" alt="Construction Solutions Logo">
+                    <!-- <h1>Construction Solutions</h1> -->
+                    <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
+                </div>
+                <div class="theme-toggle">
+                    <span class="toggle-label">Theme</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-cta">
+                <a class="btn primary" href="quote.html">Request a Quote</a>
+                <a class="btn secondary" href="projects.html">View Projects</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a class="active" href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="quote.html">Get a Quote</a>
+                <a class="employee-link" href="employee-dashboard.html" data-auth-link hidden>Employee Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <span class="auth-status" data-auth-status hidden>Signed in</span>
+                <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
+                <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" type="button" data-close-auth aria-label="Close sign in form">&times;</button>
+            <h3 id="authTitle">Employee Sign In</h3>
+            <p class="auth-copy">Access schedules, punch lists, and updates from the employee dashboard.</p>
+            <form id="authForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="authEmail">Work Email</label>
+                        <input type="email" id="authEmail" name="email" autocomplete="username"
+                            placeholder="you@constructionsolutions.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="authCode">Access Code</label>
+                        <input type="password" id="authCode" name="accessCode" autocomplete="current-password"
+                            placeholder="Enter your access code" required>
+                        <p class="form-help">Demo access code: <strong>classtest</strong></p>
+                    </div>
+                </div>
+                <p class="auth-feedback" data-auth-feedback role="alert"></p>
+                <button class="btn primary" type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="panel intro">
+            <h2>Recent Projects</h2>
+            <p>
+                Explore a snapshot of the work we complete across residential, commercial, and custom builds. Each
+                project highlights our craftsmanship, attention to detail, and collaborative approach.
+            </p>
+        </section>
+
+        <section class="panel">
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Residential Remodels</h3>
+                    <p>Complete home renovations, kitchen and bath upgrades, and exterior improvements that revitalize
+                        living spaces.</p>
+                </article>
+                <article class="card">
+                    <h3>Commercial Construction</h3>
+                    <p>Office buildings, retail spaces, and tenant improvements engineered for modern workflows and
+                        long-term performance.</p>
+                </article>
+                <article class="card">
+                    <h3>Custom Builds</h3>
+                    <p>From concept to completion, we handle custom homes and specialty structures with precision and
+                        care.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Let’s build something remarkable</h3>
+            <p>
+                Whether you have finalized drawings or are just starting to explore ideas, our team can provide the
+                guidance, coordination, and craftsmanship to make your project stand out.
+            </p>
+            <a class="btn primary" href="quote.html">Plan Your Project</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2025 Construction Solutions | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

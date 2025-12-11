@@ -8,35 +8,48 @@
 <body>
     <!-- Header / Nav -->
     <header class="site-header">
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-mark">CS</span>
-                <span class="logo-text">
-                    <span>Construction</span>
-                    <span>Solutions</span>
-                </span>
+    <div class="header-inner">
+        <div class="header-bar">
+            <div class="branding">
+                <img src="constructionSolutionsLogoT.png" alt="Construction Solutions Logo">
+                <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
             </div>
 
-            <nav class="site-nav">
-                <div class="nav-inner">
-                    <div class="nav-links">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="projects.html">Projects</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="quote.html">Get a Quote</a>
-                        <a class="employee-link" href="employee-dashboard.html" data-auth-link>Employee Dashboard</a>
-                        <a class="employee-link active" href="billing.html" data-auth-link>Billing</a>
-                    </div>
-                    <div class="nav-actions">
-                        <span class="auth-status" data-auth-status hidden>Signed in</span>
-                        <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
-                        <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
-                    </div>
-                </div>
-            </nav>
+            <div class="theme-toggle">
+                <span class="toggle-label">Theme</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch" aria-label="Toggle dark mode">
+                    <span class="slider"></span>
+                </label>
+            </div>
         </div>
-    </header>
+
+        <div class="header-cta">
+            <a class="btn primary" href="quote.html">Request a Quote</a>
+            <a class="btn secondary" href="projects.html">View Projects</a>
+        </div>
+    </div>
+</header>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="quote.html">Get a Quote</a>
+            <a href="employee-dashboard.html" data-auth-link>Employee Dashboard</a>
+            <a href="billing.html" class="active" data-auth-link>Billing</a>
+        </div>
+
+        <div class="nav-actions">
+            <span class="auth-status" data-auth-status hidden>Signed in</span>
+            <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
+            <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
+        </div>
+    </div>
+</nav>
 
     <!-- Auth overlay -->
     <div class="auth-overlay" data-auth-overlay hidden>

@@ -969,3 +969,12 @@ input:checked + .slider::before {
     max-width: 540px;
     margin: 0 auto;
 }
+
+/* Billing – widen Qty and Rate fields */
+.billing-item-qty {
+    width: 90px;
+}
+
+.billing-item-rate {
+    width: 120px;
+}

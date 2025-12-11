@@ -1292,3 +1292,117 @@ input:checked + .slider::before {
         margin-top: -2.5rem;
     }
 }
+
+/* Job Assignments layout */
+.jobs-panel {
+    margin-top: 2rem;
+}
+
+.jobs-panel h2 {
+    margin-bottom: 0.5rem;
+}
+
+.jobs-panel > p {
+    margin-bottom: 1.5rem;
+    max-width: 60rem;
+}
+
+/* Reference employee list */
+.job-assignment-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    max-width: 20rem;
+}
+
+.job-assignment-controls label {
+    font-weight: 500;
+}
+
+#employeeListPreview {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: inherit;
+    font-size: 0.9rem;
+}
+
+#employeeListPreview:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
+}
+
+.jobs-panel .hint {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Job table */
+.job-table-wrapper {
+    margin-top: 0.75rem;
+    overflow-x: auto;
+}
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    table-layout: auto;
+}
+
+.job-table thead {
+    text-align: left;
+}
+
+.job-table th,
+.job-table td {
+    padding: 0.55rem 0.75rem;
+    vertical-align: top;
+}
+
+.job-table th {
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    white-space: nowrap;
+}
+
+.job-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.job-table td:nth-child(8) {
+    max-width: 18rem;
+    line-height: 1.4;
+}
+
+.employee-select {
+    min-width: 9rem;
+    max-width: 11rem;
+    border-radius: 0.5rem;
+    padding: 0.15rem 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    font-size: 0.85rem;
+}
+
+.employee-select option {
+    font-size: 0.85rem;
+}
+
+.job-table .assign-btn {
+    width: 100%;
+    padding-inline: 0.75rem;
+    padding-block: 0.35rem;
+    font-size: 0.85rem;
+}
+
+#jobAssignmentStatus {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+

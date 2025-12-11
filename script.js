@@ -1,22 +1,16 @@
-// Theme Toggle System with Cookie Storage
+//Theme Toggle System with Cookie Storage
 const THEME_COOKIE = "siteTheme";
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; //1 year
 
 const AUTH_STORAGE_KEY = "employeeAuth";
 const ACCESS_CODE = "classtest";
 
 let authOverlayEl = null;
 
-
 const JOB_ASSIGNMENTS_KEY = "jobAssignments";
 
-const EMPLOYEES = [
-    { id: "alice", name: "Alice Johnson" },
-    { id: "brad",  name: "Brad Smith" },
-    { id: "carla", name: "Carla Martinez" },
-    { id: "derek", name: "Derek Lee" },
-    { id: "emily", name: "Emily Chen" }
-];
+let EMPLOYEES = [];
+
 
 function setCookie(name, value, maxAgeSeconds) {
     document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAgeSeconds}; Path=/; SameSite=Lax`;
@@ -57,7 +51,7 @@ function initTheme() {
         });
     }
 
-    // If no cookie, update on system change
+    //If no cookie, update on system change
     if (!saved && window.matchMedia) {
         const mq = window.matchMedia("(prefers-color-scheme: dark)");
         mq.addEventListener("change", (e) => {
@@ -203,14 +197,36 @@ function initAuth() {
     updateAuthUI();
 }
 
+async function loadEmployees() {
+    try {
+        const response = await fetch("employees.php");
+        if (!response.ok) {
+            throw new Error("Failed to load employees");
+        }
+
+        const data = await response.json();
+        const employees = Array.isArray(data.employees) ? data.employees : [];
+
+        
+        EMPLOYEES = employees.map(emp => ({
+            id: String(emp.id),
+            name: emp.name
+        }));
+    } catch (err) {
+        console.error("Error loading employees:", err);
+        EMPLOYEES = []; 
+    }
+}
+
 async function initJobAssignments() {
-    //Only runs on pages that have the job table
     const tableBody = document.getElementById("jobTableBody");
     if (!tableBody) return;
 
     const statusEl = document.getElementById("jobAssignmentStatus");
 
     try {
+        await loadEmployees();
+
         const response = await fetch("data/jobs.json");
         if (!response.ok) {
             throw new Error("Failed to load jobs.json");
@@ -247,7 +263,7 @@ async function initJobAssignments() {
                 <td>${foreman}</td>
                 <td>${scope}</td>
                 <td>
-                    <select class="employee-select" data-job-id="${jobId}" multiple>
+                    <select class="employee-select" data-job-id="${jobId}" multiple size="4">
                         ${EMPLOYEES.map(emp => `
                             <option value="${emp.id}">${emp.name}</option>
                         `).join("")}
@@ -265,7 +281,7 @@ async function initJobAssignments() {
             tableBody.appendChild(tr);
         });
 
-        // Apply saved assignments
+        //Apply saved assignments
         document.querySelectorAll(".employee-select").forEach((select) => {
             const jobId = select.getAttribute("data-job-id");
             const assigned = storedAssignments[jobId] || [];
@@ -277,7 +293,7 @@ async function initJobAssignments() {
             });
         });
 
-        // Wire up Assign buttons
+        //Wire up Assign buttons
         document.querySelectorAll(".assign-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
                 const jobId = btn.getAttribute("data-job-id");
@@ -318,13 +334,14 @@ async function initJobAssignments() {
     }
 }
 
+
 function initApp() {
     initTheme();
     initAuth();
-    initJobAssignments(); // new
+    initJobAssignments(); 
 }
 
-// Run when DOM is ready
+//Run when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initApp);
 } else {

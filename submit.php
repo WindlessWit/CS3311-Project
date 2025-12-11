@@ -1,6 +1,6 @@
 <?php
 // Connect to MySQL
-$conn = new mysqli("localhost", "root", "", "company_site");
+$conn = new mysqli("localhost", "root", "", "construction_solutions");
 
 // Check connection
 if ($conn->connect_error) {

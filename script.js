@@ -104,6 +104,16 @@ function updateAuthUI() {
     document.querySelectorAll("[data-auth-required]").forEach((alert) => {
         alert.style.display = isSignedIn ? "none" : "block";
     });
+
+    // Sections that should ONLY be visible to signed-in employees (Billing main content)
+    document.querySelectorAll("[data-auth-only]").forEach((section) => {
+        section.hidden = !isSignedIn;
+    });
+
+    // Sections that should show ONLY when the user is NOT signed in (Billing guest card)
+    document.querySelectorAll("[data-auth-guest-only]").forEach((section) => {
+        section.hidden = isSignedIn;
+    });
 }
 
 function openAuthModal() {

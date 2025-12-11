@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing | Construction Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header / Nav -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-mark">CS</span>
+                <span class="logo-text">
+                    <span>Construction</span>
+                    <span>Solutions</span>
+                </span>
+            </div>
+
+            <nav class="site-nav">
+                <div class="nav-inner">
+                    <div class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="quote.html">Get a Quote</a>
+                        <a class="employee-link" href="employee-dashboard.html" data-auth-link>Employee Dashboard</a>
+                        <a class="employee-link active" href="billing.html" data-auth-link>Billing</a>
+                    </div>
+                    <div class="nav-actions">
+                        <span class="auth-status" data-auth-status hidden>Signed in</span>
+                        <button class="btn nav-auth" type="button" data-open-auth>Employee Sign In</button>
+                        <button class="btn nav-auth secondary" type="button" data-sign-out hidden>Sign Out</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Auth overlay (same as other pages) -->
+    <div class="auth-overlay" data-auth-overlay hidden>
+        <div class="auth-modal">
+            <button class="auth-close" type="button" data-close-auth>&times;</button>
+            <h2>Employee Sign In</h2>
+            <p class="auth-note">
+                Use the credentials provided in class to access the employee tools.
+            </p>
+            <form class="auth-form" data-auth-form>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" required placeholder="you@example.com">
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" required placeholder="********">
+                </label>
+                <button class="btn full-width" type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <!-- Small hero -->
+        <section class="hero hero-small">
+            <div class="container">
+                <h1>Billing</h1>
+                <p class="hero-subtitle">
+                    Create and manage quotes &amp; invoices for Construction Solutions clients.
+                </p>
+            </div>
+        </section>
+
+        <!-- EMPLOYEE-ONLY CONTENT -->
+        <section class="section" data-auth-only>
+            <div class="container">
+                <div class="billing-layout">
+                    <aside class="billing-sidebar">
+                        <h2>Billing Tools</h2>
+                        <ul class="billing-menu">
+                            <li>
+                                <button type="button"
+                                        class="billing-tab active"
+                                        data-billing-tab="quotes">
+                                    Quotes / Estimates
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                        class="billing-tab"
+                                        data-billing-tab="invoices">
+                                    Invoices
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- NEW: Quote list area -->
+                        <h3 class="billing-subheading">Saved Quotes</h3>
+                        <p id="billing-quotes-empty" class="form-hint">
+                            No quotes yet. Create one on the right and save it.
+                        </p>
+                        <div id="billing-quotes-error" class="form-error" hidden></div>
+                        <ul id="billing-quotes-list" class="billing-list"></ul>
+
+                        <p class="billing-note">
+                            This area is only visible to signed-in employees. Use it to prepare
+                            estimates and convert approved quotes into invoices.
+                        </p>
+                    </aside>
+
+                    <div class="billing-content">
+                        <section class="billing-panel" data-billing-panel="quotes">
+                            <h2>Quotes / Estimates</h2>
+
+                            <div class="card">
+                                <!-- TOP: client + quote meta -->
+                                <div class="form-grid two-columns">
+                                    <div class="field">
+                                        <label for="billing-client-select">Client</label>
+                                        <select id="billing-client-select">
+                                            <option value="">Loading clients...</option>
+                                        </select>
+                                        <p class="form-hint">
+                                            Choose an existing client saved in the system.
+                                            (Later we can add “new client” from here.)
+                                        </p>
+                                        <div class="form-error" id="billing-clients-error" hidden></div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="billing-quote-title">Quote title / reference</label>
+                                        <input
+                                            type="text"
+                                            id="billing-quote-title"
+                                            placeholder="e.g., Kitchen remodel estimate"
+                                        >
+                                        <p class="form-hint">
+                                            Optional internal name for this quote.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- LINE ITEMS -->
+                                <div class="quote-items-header">
+                                    <div class="field">
+                                        <label>Line items</label>
+                                        <p class="form-hint">
+                                            Select a saved service or type a custom description.
+                                            You can change quantity and rate for each line.
+                                        </p>
+                                    </div>
+                                    <div class="form-error" id="billing-items-error" hidden></div>
+                                </div>
+
+                                <div class="table-wrapper">
+                                    <table class="job-table billing-table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 45%;">Item / Description</th>
+                                                <th style="width: 10%;">Qty</th>
+                                                <th style="width: 15%;">Rate</th>
+                                                <th style="width: 15%;">Line total</th>
+                                                <th style="width: 5%;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="billing-items-body">
+                                            <!-- JS will insert rows here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="button"
+                                        class="btn secondary"
+                                        id="billing-add-item">
+                                    + Add line item
+                                </button>
+
+                                <!-- NOTES + TOTAL -->
+                                <div class="quote-footer">
+                                    <div class="field">
+                                        <label for="billing-notes">Details / Notes</label>
+                                        <textarea
+                                            id="billing-notes"
+                                            rows="3"
+                                            placeholder="Special instructions, payment terms, etc.">
+                                        </textarea>
+                                    </div>
+
+                                    <div class="quote-summary">
+                                        <div class="quote-total-row">
+                                            <span>Subtotal</span>
+                                            <span id="billing-subtotal">$0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ACTIONS -->
+                                <div class="billing-actions">
+                                    <button type="button"
+                                            class="btn secondary"
+                                            id="billing-save-draft">
+                                        Save Draft (front-end only)
+                                    </button>
+                                    <button type="button"
+                                            class="btn"
+                                            id="billing-issue-quote">
+                                        Issue Quote (front-end only)
+                                    </button>
+                                </div>
+
+                                <!-- Optional debug: hides by default -->
+                                <pre id="billing-debug-clients"
+                                    class="debug-output"
+                                    hidden></pre>
+                            </div>
+                        </section>
+
+                        <section class="billing-panel" data-billing-panel="invoices" hidden>
+                            <h2>Invoices</h2>
+                            <p>
+                                This panel will show invoice creation and issued invoices, including the
+                                ability to convert quotes into invoices and track payment status.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUEST VIEW (if not signed in) -->
+        <section class="section" data-auth-guest-only>
+            <div class="container">
+                <div class="card notice-card">
+                    <h2>Employee Access Required</h2>
+                    <p>
+                        Please sign in as an employee to access the billing tools.
+                    </p>
+                    <button class="btn" type="button" data-open-auth>Employee Sign In</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2025 Construction Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="billing.js"></script>
+</body>
+</html>

@@ -334,11 +334,154 @@ async function initJobAssignments() {
     }
 }
 
+let quoteCurrentPage = 1;
+const QUOTE_PAGE_SIZE = 5;
+let quoteCurrentSearch = "";
+let quoteSearchDebounceId = null;
+
+async function fetchQuoteRequests() {
+    const tableBody = document.getElementById("quoteTableBody");
+    const statusEl = document.getElementById("quoteStatus");
+    const pageInfoEl = document.getElementById("quotePageInfo");
+    const paginationEl = document.getElementById("quotePagination");
+
+    if (!tableBody || !paginationEl) return; // not on this page
+
+    try {
+        if (statusEl) {
+            statusEl.textContent = "Loading quote requests…";
+        }
+
+        const params = new URLSearchParams({
+            page: String(quoteCurrentPage),
+            pageSize: String(QUOTE_PAGE_SIZE),
+            q: quoteCurrentSearch
+        });
+
+        const response = await fetch("quote_requests.php?" + params.toString());
+        if (!response.ok) {
+            throw new Error("Failed to load quote requests");
+        }
+
+        const data = await response.json();
+        const requests = Array.isArray(data.requests) ? data.requests : [];
+        const currentPage = data.page || 1;
+        const totalPages = data.totalPages || 1;
+        const totalCount = data.totalCount || 0;
+
+        quoteCurrentPage = currentPage;
+
+        tableBody.innerHTML = "";
+
+        if (requests.length === 0) {
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.colSpan = 5;
+            td.textContent = quoteCurrentSearch
+                ? "No quote requests match your search."
+                : "No quote requests have been submitted yet.";
+            tr.appendChild(td);
+            tableBody.appendChild(tr);
+        } else {
+            requests.forEach((rq) => {
+                const tr = document.createElement("tr");
+
+                const submitted = new Date(rq.submitted_at);
+                const submittedText = isNaN(submitted.getTime())
+                    ? rq.submitted_at
+                    : submitted.toLocaleString();
+
+                tr.innerHTML = `
+                    <td>${submittedText}</td>
+                    <td>${rq.name}</td>
+                    <td>
+                        <div>${rq.email}</div>
+                        <div>${rq.phone}</div>
+                    </td>
+                    <td>${rq.service}</td>
+                    <td class="quote-details-cell">${rq.details || ""}</td>
+                `;
+
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // Update pagination controls
+        const [prevBtn, nextBtn] = paginationEl.querySelectorAll("button[data-quote-page]");
+        if (prevBtn) {
+            prevBtn.disabled = currentPage <= 1;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = currentPage >= totalPages;
+        }
+
+        if (pageInfoEl) {
+            pageInfoEl.textContent = `Page ${currentPage} of ${totalPages} (${totalCount} total)`;
+        }
+
+        if (statusEl) {
+            statusEl.textContent = "";
+        }
+    } catch (err) {
+        console.error(err);
+        if (statusEl) {
+            statusEl.textContent = "Error loading quote requests. Please try again later.";
+        }
+    }
+}
+
+function initQuoteRequests() {
+    const searchInput = document.getElementById("quoteSearch");
+    const paginationEl = document.getElementById("quotePagination");
+
+    const tableBody = document.getElementById("quoteTableBody");
+    if (!tableBody) return;
+
+    //Search handler with small debounce
+    if (searchInput) {
+        searchInput.addEventListener("input", () => {
+            const value = searchInput.value.trim();
+            quoteCurrentSearch = value;
+            quoteCurrentPage = 1;
+
+            if (quoteSearchDebounceId) {
+                clearTimeout(quoteSearchDebounceId);
+            }
+
+            quoteSearchDebounceId = setTimeout(() => {
+                fetchQuoteRequests();
+            }, 300);
+        });
+    }
+
+    //Pagination buttons
+    if (paginationEl) {
+        paginationEl.addEventListener("click", (event) => {
+            const target = event.target;
+            if (!(target instanceof HTMLElement)) return;
+
+            const action = target.getAttribute("data-quote-page");
+            if (!action) return;
+
+            if (action === "prev" && quoteCurrentPage > 1) {
+                quoteCurrentPage -= 1;
+                fetchQuoteRequests();
+            } else if (action === "next") {
+                quoteCurrentPage += 1;
+                fetchQuoteRequests();
+            }
+        });
+    }
+
+    //Initial load
+    fetchQuoteRequests();
+}
 
 function initApp() {
     initTheme();
     initAuth();
-    initJobAssignments(); 
+    initJobAssignments();
+    initQuoteRequests(); 
 }
 
 //Run when DOM is ready

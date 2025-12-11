@@ -124,6 +124,46 @@
                 </div>
             </div>
         </section>
+        
+        <section class="panel quotes-panel">
+    <h2>Quote Requests</h2>
+    <p>
+        Search and review all quote requests submitted from the public site. All employees can view these
+        entries for scheduling and follow-up.
+    </p>
+
+    <div class="quote-controls">
+        <label for="quoteSearch" class="visually-hidden">Search quote requests</label>
+        <input id="quoteSearch" type="search"
+               placeholder="Search by name, email, phone, or service…">
+    </div>
+
+    <div class="quote-table-wrapper">
+        <table class="quote-table">
+            <thead>
+                <tr>
+                    <th>Submitted</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Service</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="quoteTableBody">
+                <!-- Rows injected by script.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="quote-pagination" id="quotePagination">
+        <button type="button" class="btn secondary" data-quote-page="prev" disabled>Previous</button>
+        <span id="quotePageInfo">Page 1 of 1</span>
+        <button type="button" class="btn secondary" data-quote-page="next" disabled>Next</button>
+    </div>
+
+    <p id="quoteStatus" class="status-message" aria-live="polite"></p>
+</section>
+
 
         <!-- Job Assignments section -->
         <section class="panel jobs-panel">

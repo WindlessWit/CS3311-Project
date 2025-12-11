@@ -1,11 +1,22 @@
-//Theme Toggle System with Cookie Storage
+// Theme Toggle System with Cookie Storage
 const THEME_COOKIE = "siteTheme";
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; //1 year
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
 const AUTH_STORAGE_KEY = "employeeAuth";
 const ACCESS_CODE = "classtest";
 
 let authOverlayEl = null;
+
+
+const JOB_ASSIGNMENTS_KEY = "jobAssignments";
+
+const EMPLOYEES = [
+    { id: "alice", name: "Alice Johnson" },
+    { id: "brad",  name: "Brad Smith" },
+    { id: "carla", name: "Carla Martinez" },
+    { id: "derek", name: "Derek Lee" },
+    { id: "emily", name: "Emily Chen" }
+];
 
 function setCookie(name, value, maxAgeSeconds) {
     document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAgeSeconds}; Path=/; SameSite=Lax`;
@@ -46,7 +57,7 @@ function initTheme() {
         });
     }
 
-    //If no cookie, update on system change
+    // If no cookie, update on system change
     if (!saved && window.matchMedia) {
         const mq = window.matchMedia("(prefers-color-scheme: dark)");
         mq.addEventListener("change", (e) => {
@@ -192,12 +203,128 @@ function initAuth() {
     updateAuthUI();
 }
 
+async function initJobAssignments() {
+    //Only runs on pages that have the job table
+    const tableBody = document.getElementById("jobTableBody");
+    if (!tableBody) return;
+
+    const statusEl = document.getElementById("jobAssignmentStatus");
+
+    try {
+        const response = await fetch("data/jobs.json");
+        if (!response.ok) {
+            throw new Error("Failed to load jobs.json");
+        }
+
+        const data = await response.json();
+        const jobs = Array.isArray(data.jobs) ? data.jobs : [];
+
+        const storedAssignments = JSON.parse(
+            localStorage.getItem(JOB_ASSIGNMENTS_KEY) || "{}"
+        );
+
+        tableBody.innerHTML = "";
+
+        jobs.forEach((job) => {
+            const tr = document.createElement("tr");
+
+            const jobId = job.id;
+            const project = job.project;
+            const location = job.location;
+            const shift = job.shift;
+            const startDate = job.startDate;
+            const priority = job.priority;
+            const foreman = job.foreman;
+            const scope = job.scope;
+
+            tr.innerHTML = `
+                <td>${jobId}</td>
+                <td>${project}</td>
+                <td>${location}</td>
+                <td>${shift}</td>
+                <td>${startDate}</td>
+                <td>${priority}</td>
+                <td>${foreman}</td>
+                <td>${scope}</td>
+                <td>
+                    <select class="employee-select" data-job-id="${jobId}" multiple>
+                        ${EMPLOYEES.map(emp => `
+                            <option value="${emp.id}">${emp.name}</option>
+                        `).join("")}
+                    </select>
+                </td>
+                <td>
+                    <button type="button"
+                            class="btn secondary assign-btn"
+                            data-job-id="${jobId}">
+                        Assign
+                    </button>
+                </td>
+            `;
+
+            tableBody.appendChild(tr);
+        });
+
+        // Apply saved assignments
+        document.querySelectorAll(".employee-select").forEach((select) => {
+            const jobId = select.getAttribute("data-job-id");
+            const assigned = storedAssignments[jobId] || [];
+
+            Array.from(select.options).forEach((opt) => {
+                if (assigned.includes(opt.value)) {
+                    opt.selected = true;
+                }
+            });
+        });
+
+        // Wire up Assign buttons
+        document.querySelectorAll(".assign-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const jobId = btn.getAttribute("data-job-id");
+                const select = document.querySelector(
+                    `.employee-select[data-job-id="${jobId}"]`
+                );
+                if (!select) return;
+
+                const selectedIds = Array.from(select.selectedOptions).map(
+                    (opt) => opt.value
+                );
+
+                const assignments = JSON.parse(
+                    localStorage.getItem(JOB_ASSIGNMENTS_KEY) || "{}"
+                );
+                assignments[jobId] = selectedIds;
+                localStorage.setItem(
+                    JOB_ASSIGNMENTS_KEY,
+                    JSON.stringify(assignments)
+                );
+
+                if (statusEl) {
+                    const names = EMPLOYEES
+                        .filter((e) => selectedIds.includes(e.id))
+                        .map((e) => e.name)
+                        .join(", ") || "no one";
+
+                    statusEl.textContent = `Assigned ${names} to job ${jobId}.`;
+                }
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        if (statusEl) {
+            statusEl.textContent =
+                "Error loading jobs. Please refresh or try again later.";
+        }
+    }
+}
+
 function initApp() {
     initTheme();
     initAuth();
+    initJobAssignments(); // new
 }
 
-//Run when DOM is ready
+// Run when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initApp);
 } else {

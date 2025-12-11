@@ -124,6 +124,54 @@
                 </div>
             </div>
         </section>
+
+        <!-- Job Assignments section -->
+        <section class="panel jobs-panel">
+            <h2>Job Assignments</h2>
+            <p>
+                Review all open jobs and assign one or more employees to each task. Changes are stored in your browser
+                for demo purposes.
+            </p>
+
+            <!-- Random list of available employees just for reference -->
+            <div class="job-assignment-controls">
+                <label for="employeeListPreview">Available employees (reference)</label>
+                <select id="employeeListPreview" multiple>
+                    <option value="alice">Alice Johnson</option>
+                    <option value="brad">Brad Smith</option>
+                    <option value="carla">Carla Martinez</option>
+                    <option value="derek">Derek Lee</option>
+                    <option value="emily">Emily Chen</option>
+                </select>
+                <p class="hint">
+                    Hold Ctrl (Windows) or Cmd (Mac) to select multiple employees.
+                </p>
+            </div>
+
+            <div class="job-table-wrapper">
+                <table class="job-table">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Project</th>
+                            <th>Location</th>
+                            <th>Shift</th>
+                            <th>Start Date</th>
+                            <th>Priority</th>
+                            <th>Foreman</th>
+                            <th>Scope</th>
+                            <th>Assign Employees</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobTableBody">
+                        <!-- Rows are injected by script.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="jobAssignmentStatus" class="status-message" aria-live="polite"></p>
+        </section>
     </main>
 
     <footer class="site-footer">

@@ -1,0 +1,9 @@
+{
+  "employees": [
+    { "id": "emp-001", "name": "Jane Smith", "email": "jane.smith@constructionsolutions.com", "role": "Foreman" },
+    { "id": "emp-002", "name": "Carlos Ramirez", "email": "carlos.ramirez@constructionsolutions.com", "role": "Electrician" },
+    { "id": "emp-003", "name": "Priya Patel", "email": "priya.patel@constructionsolutions.com", "role": "Project Engineer" },
+    { "id": "emp-004", "name": "Logan Davis", "email": "logan.davis@constructionsolutions.com", "role": "Carpenter" },
+    { "id": "emp-005", "name": "Mia Chen", "email": "mia.chen@constructionsolutions.com", "role": "Safety Officer" }
+  ]
+}

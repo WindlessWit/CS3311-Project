@@ -18,7 +18,8 @@
         <div class="header-inner">
             <div class="header-bar">
                 <div class="branding">
-                    <h1>Construction Solutions</h1>
+                    <img src="constructionSolutionsLogoT.png" alt="Construction Solutions Logo">
+                    <!-- <h1>Construction Solutions</h1> -->
                     <p class="tagline">Reliable, honest, and quality work you can trust for every build.</p>
                 </div>
                 <div class="theme-toggle">
@@ -70,7 +71,7 @@
                         <label for="authCode">Access Code</label>
                         <input type="password" id="authCode" name="accessCode" autocomplete="current-password"
                             placeholder="Enter your access code" required>
-                        <p class="form-help">Demo access code: <strong>buildsafe</strong></p>
+                        <p class="form-help">Demo access code: <strong>classtest</strong></p>
                     </div>
                 </div>
                 <p class="auth-feedback" data-auth-feedback role="alert"></p>
@@ -119,114 +120,6 @@
                         <li><strong>Timesheets</strong><span>Submit end-of-day hours</span></li>
                         <li><strong>Tool Crib</strong><span>Reserve specialty equipment</span></li>
                         <li><strong>Incident Log</strong><span>Report safety observations</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="panel assignment-panel" id="assignments">
-            <div class="panel-heading">
-                <div>
-                    <h2>Job Assignments</h2>
-                    <p>Pull live jobs, choose a shift, and reserve a spot on the crew.</p>
-                </div>
-                <div class="panel-actions">
-                    <button class="btn secondary" type="button" data-refresh-jobs>Refresh jobs</button>
-                    <span class="pill" data-job-count>Loading jobs…</span>
-                </div>
-            </div>
-
-            <div class="assignment-grid">
-                <div class="card">
-                    <h3>Reserve your assignment</h3>
-                    <p class="muted">Your selections are saved in the browser and posted via AJAX for dispatch.</p>
-                    <form class="assignment-form" id="assignmentForm" novalidate>
-                        <div class="form-grid">
-                            <div class="field">
-                                <label for="assignName">Your Name</label>
-                                <input id="assignName" name="name" placeholder="Jane Smith" autocomplete="name" required>
-                            </div>
-                            <div class="field">
-                                <label for="assignEmail">Work Email</label>
-                                <input id="assignEmail" name="email" type="email" placeholder="you@constructionsolutions.com" autocomplete="email"
-                                    required>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="jobSelect">Job / Location</label>
-                            <select id="jobSelect" name="jobId" required data-job-select>
-                                <option value="">Loading jobs…</option>
-                            </select>
-                            <p class="form-help">Select a job to see foreman, priority, and scope details.</p>
-                        </div>
-
-                        <div class="form-grid">
-                            <div class="field">
-                                <label for="shiftSelect">Shift</label>
-                                <select id="shiftSelect" name="shift" required>
-                                    <option value="">Choose a shift</option>
-                                    <option value="Day">Day</option>
-                                    <option value="Swing">Swing</option>
-                                    <option value="Night">Night</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="startDate">Start Date</label>
-                                <input id="startDate" name="startDate" type="date" required>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="notes">Notes to dispatch</label>
-                            <textarea id="notes" name="notes" rows="3" placeholder="e.g., Need scissor lift reserved"></textarea>
-                        </div>
-
-                        <p class="auth-feedback" data-assign-feedback role="alert"></p>
-                        <button class="btn primary" type="submit" data-submit-assignment>Send assignment via AJAX</button>
-                    </form>
-                </div>
-
-                <div class="card" aria-live="polite">
-                    <div class="list-header">
-                        <div>
-                            <h3>Available jobs</h3>
-                            <p class="muted">Filtered by shift, location, or priority.</p>
-                        </div>
-                        <div class="filters">
-                            <label>
-                                <span class="sr-only">Filter by location</span>
-                                <select data-filter-location>
-                                    <option value="">All locations</option>
-                                </select>
-                            </label>
-                            <label>
-                                <span class="sr-only">Filter by shift</span>
-                                <select data-filter-shift>
-                                    <option value="">All shifts</option>
-                                    <option value="Day">Day</option>
-                                    <option value="Swing">Swing</option>
-                                    <option value="Night">Night</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-
-                    <ul class="job-list" data-job-list>
-                        <li class="job-row loading">Fetching jobs…</li>
-                    </ul>
-                </div>
-
-                <div class="card assignment-log" aria-live="polite">
-                    <div class="list-header">
-                        <div>
-                            <h3>Recent submissions</h3>
-                            <p class="muted">Saved locally after each successful AJAX post.</p>
-                        </div>
-                        <button class="btn tertiary" type="button" data-clear-assignments>Clear log</button>
-                    </div>
-                    <ul class="job-list" data-assignment-log>
-                        <li class="job-row muted">No submissions yet.</li>
                     </ul>
                 </div>
             </div>

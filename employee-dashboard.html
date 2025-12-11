@@ -85,11 +85,13 @@
         <section class="panel intro">
             <h2>Employee Dashboard</h2>
             <p>
-                Welcome to your internal workspace. Track today's assignments, check upcoming milestones, and quickly get
+                Welcome to your internal workspace. Track today's assignments, check upcoming milestones, and quickly
+                get
                 to the tools you need in the field.
             </p>
             <div class="alert" data-auth-required>
-                <strong>Heads up:</strong> This dashboard is optimized for signed-in team members. Use the sign-in button
+                <strong>Heads up:</strong> This dashboard is optimized for signed-in team members. Use the sign-in
+                button
                 above to unlock links and personalize your view.
             </div>
         </section>
@@ -125,45 +127,47 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="panel quotes-panel">
-    <h2>Quote Requests</h2>
-    <p>
-        Search and review all quote requests submitted from the public site. All employees can view these
-        entries for scheduling and follow-up.
-    </p>
+            <h2>Quote Requests</h2>
+            <p>
+                Search and review all quote requests submitted from the public site. All employees can view these
+                entries for scheduling and follow-up.
+            </p>
 
-    <div class="quote-controls">
-        <label for="quoteSearch" class="visually-hidden">Search quote requests</label>
-        <input id="quoteSearch" type="search"
-               placeholder="Search by name, email, phone, or service…">
-    </div>
+            <div class="quote-controls">
+                <label for="quoteSearch" class="visually-hidden">Search quote requests</label>
+                <input id="quoteSearch" type="search" placeholder="Search by name, email, phone, or service…">
+            </div>
 
-    <div class="quote-table-wrapper">
-        <table class="quote-table">
-            <thead>
-                <tr>
-                    <th>Submitted</th>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Service</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody id="quoteTableBody">
-                <!-- Rows injected by script.js -->
-            </tbody>
-        </table>
-    </div>
+            <div class="quote-table-wrapper">
+                <table class="quote-table">
+                    <thead>
+                        <tr>
+                            <td class="qr-submitted">{submitted_at}</td>
+                            <td class="qr-name">{name}</td>
+                            <td class="qr-contact">
+                                <div>{email}</div>
+                                <div>{phone}</div>
+                            </td>
+                            <td class="qr-service">{service}</td>
+                            <td class="qr-details">{details}</td>
+                        </tr>
+                    </thead>
+                    <tbody id="quoteTableBody">
+                        <!-- Rows injected by script.js -->
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="quote-pagination" id="quotePagination">
-        <button type="button" class="btn secondary" data-quote-page="prev" disabled>Previous</button>
-        <span id="quotePageInfo">Page 1 of 1</span>
-        <button type="button" class="btn secondary" data-quote-page="next" disabled>Next</button>
-    </div>
+            <div class="quote-pagination" id="quotePagination">
+                <button type="button" class="btn secondary" data-quote-page="prev" disabled>Previous</button>
+                <span id="quotePageInfo">Page 1 of 1</span>
+                <button type="button" class="btn secondary" data-quote-page="next" disabled>Next</button>
+            </div>
 
-    <p id="quoteStatus" class="status-message" aria-live="polite"></p>
-</section>
+            <p id="quoteStatus" class="status-message" aria-live="polite"></p>
+        </section>
 
 
         <!-- Job Assignments section -->

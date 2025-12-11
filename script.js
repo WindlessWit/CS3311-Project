@@ -368,7 +368,7 @@ async function fetchQuoteRequests() {
             q: quoteCurrentSearch
         });
 
-        const response = await fetch("quote_requests.php?" + params.toString());
+        const response = await fetch("api/list_quote_requests.php?" + params.toString());
         if (!response.ok) {
             throw new Error("Failed to load quote requests");
         }

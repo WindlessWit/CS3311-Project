@@ -242,6 +242,136 @@ a:hover {
     color: #059669;
 }
 
+.auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 50;
+}
+
+.auth-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.auth-modal {
+    background: var(--surface);
+    color: var(--text);
+    width: min(520px, 100%);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 28px 60px rgba(15, 23, 42, 0.35);
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.auth-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.auth-copy {
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+.auth-feedback {
+    margin: 0.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.auth-feedback.error {
+    color: #dc2626;
+}
+
+.auth-feedback.success {
+    color: #059669;
+}
+
+.auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 50;
+}
+
+.auth-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.auth-modal {
+    background: var(--surface);
+    color: var(--text);
+    width: min(520px, 100%);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 28px 60px rgba(15, 23, 42, 0.35);
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.auth-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.auth-copy {
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+.auth-feedback {
+    margin: 0.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.auth-feedback.error {
+    color: #dc2626;
+}
+
+.auth-feedback.success {
+    color: #059669;
+}
+
 main {
     width: min(1100px, 92vw);
     margin: -2rem auto 4rem;
@@ -560,6 +690,189 @@ form button.btn {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+.alert {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 122, 24, 0.12);
+    border: 1px solid rgba(255, 122, 24, 0.3);
+    color: var(--text);
+}
+
+.employee-panel .employee-panel-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.employee-actions {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+}
+
+.employee-actions .hint {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.assignment-panel .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--text);
+    font-weight: 600;
+    border: 1px solid var(--border);
+}
+
+.assignment-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.assignment-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.list-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.job-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.job-row {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    display: grid;
+    gap: 0.35rem;
+    box-shadow: 0 14px 26px rgba(15, 23, 42, 0.08);
+}
+
+.job-row strong {
+    font-size: 1rem;
+}
+
+.job-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 122, 24, 0.12);
+    color: var(--brand-strong);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+}
+
+.badge.neutral {
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--text);
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.job-row.loading {
+    text-align: center;
+    color: var(--muted);
+}
+
+.assignment-log .job-row {
+    background: linear-gradient(120deg, rgba(255, 122, 24, 0.08), rgba(255, 255, 255, 0.65));
+}
+
+.job-row small {
+    color: var(--muted);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.alert {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 122, 24, 0.12);
+    border: 1px solid rgba(255, 122, 24, 0.3);
+    color: var(--text);
+}
+
+.employee-panel .employee-panel-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.employee-actions {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+}
+
+.employee-actions .hint {
+    color: var(--muted);
+    font-size: 0.95rem;
 }
 
 .alert {

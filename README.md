@@ -10,7 +10,6 @@ This repository contains a static marketing site for a construction company with
 - `script.js` – Handles theme toggling, form enhancements, sign-in modal behavior, and dynamic navigation state.
 - `submit.php` – Server-side handler stub for form submissions.
 - `data/jobs.json` – Static data source that feeds the AJAX-driven job assignment list on the employee dashboard.
-- `data/employees.json` – Roster used to populate the job assignment employee selector.
 
 ## Running the Site
 Because the project is a static website, you can open `index.html` directly in a browser. For consistent relative-link behavior, you can also serve the directory with any static server:
@@ -28,7 +27,6 @@ Use the "Employee" button in the site navigation to open the sign-in modal. Afte
 - Form inputs include basic client-side enhancements but server handling is minimal and should be expanded before production use.
 - Authentication is front-end only and intended for demonstration; replace with a secure backend before deploying to a live environment.
 - Job assignments load via AJAX from `data/jobs.json` and post to `submit.php`; responses are cached locally to support offline-first behavior.
-- Employee selections for assignments are pulled from `data/employees.json` via AJAX and auto-fill the name/email fields to speed dispatch requests.
 
 ## Contributing
 1. Fork the repository and create a feature branch.

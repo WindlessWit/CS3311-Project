@@ -1,0 +1,64 @@
+{
+  "jobs": [
+    {
+      "id": "NB-204",
+      "project": "North Build - Office Tower",
+      "location": "Uptown",
+      "shift": "Day",
+      "startDate": "2025-03-17",
+      "foreman": "M. Alvarez",
+      "priority": "High",
+      "scope": "Frame level 3, inspect embeds, set elevator curbs"
+    },
+    {
+      "id": "DT-118",
+      "project": "Downtown TI - Level 4",
+      "location": "Downtown",
+      "shift": "Swing",
+      "startDate": "2025-03-18",
+      "foreman": "S. Patel",
+      "priority": "Medium",
+      "scope": "Start electrical rough-in, coordinate with fire alarm vendor"
+    },
+    {
+      "id": "WT-042",
+      "project": "Warehouse Tilt-Up",
+      "location": "Westside",
+      "shift": "Day",
+      "startDate": "2025-03-19",
+      "foreman": "J. Brooks",
+      "priority": "High",
+      "scope": "Panel patching, brace removal, and cleanup"
+    },
+    {
+      "id": "SH-310",
+      "project": "Shop Prefab Line",
+      "location": "Shop",
+      "shift": "Day",
+      "startDate": "2025-03-17",
+      "foreman": "R. Tran",
+      "priority": "Low",
+      "scope": "Build window trim kits for Friday loadout"
+    },
+    {
+      "id": "BL-077",
+      "project": "Blakely Residence",
+      "location": "Lake District",
+      "shift": "Day",
+      "startDate": "2025-03-18",
+      "foreman": "C. Lee",
+      "priority": "Medium",
+      "scope": "Tile prep in bathrooms, waterproofing checks"
+    },
+    {
+      "id": "HS-901",
+      "project": "High School Gym Renovation",
+      "location": "Civic Center",
+      "shift": "Night",
+      "startDate": "2025-03-17",
+      "foreman": "T. Nguyen",
+      "priority": "High",
+      "scope": "Strip flooring, prep for bleacher install"
+    }
+  ]
+}

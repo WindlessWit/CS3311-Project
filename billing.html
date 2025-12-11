@@ -38,7 +38,7 @@
         </div>
     </header>
 
-    <!-- Auth overlay (same as other pages) -->
+    <!-- Auth overlay -->
     <div class="auth-overlay" data-auth-overlay hidden>
         <div class="auth-modal">
             <button class="auth-close" type="button" data-close-auth>&times;</button>
@@ -66,7 +66,7 @@
             <div class="container">
                 <h1>Billing</h1>
                 <p class="hero-subtitle">
-                    Create and manage quotes &amp; invoices for Construction Solutions clients.
+                    Create and manage quotes and estimates for Construction Solutions clients.
                 </p>
             </div>
         </section>
@@ -77,6 +77,8 @@
                 <div class="billing-layout">
                     <aside class="billing-sidebar">
                         <h2>Billing Tools</h2>
+
+                        <!-- We keep a single "Quotes / Estimates" header, no invoice tab -->
                         <ul class="billing-menu">
                             <li>
                                 <button type="button"
@@ -85,30 +87,26 @@
                                     Quotes / Estimates
                                 </button>
                             </li>
-                            <li>
-                                <button type="button"
-                                        class="billing-tab"
-                                        data-billing-tab="invoices">
-                                    Invoices
-                                </button>
-                            </li>
                         </ul>
 
-                        <!-- NEW: Quote list area -->
-                        <h3 class="billing-subheading">Saved Quotes</h3>
-                        <p id="billing-quotes-empty" class="form-hint">
-                            No quotes yet. Create one on the right and save it.
-                        </p>
-                        <div id="billing-quotes-error" class="form-error" hidden></div>
-                        <ul id="billing-quotes-list" class="billing-list"></ul>
+                        <!-- Quotes list (sidebar) -->
+                        <div class="billing-sidebar-section" data-sidebar="quotes">
+                            <h3>Current Quotes</h3>
+                            <p id="billing-quotes-empty" class="muted">
+                                No quotes yet. Create your first quote on the right.
+                            </p>
+                            <div class="form-error" id="billing-quotes-error" hidden></div>
+                            <ul id="billing-quotes-list" class="billing-quote-list"></ul>
+                        </div>
 
                         <p class="billing-note">
                             This area is only visible to signed-in employees. Use it to prepare
-                            estimates and convert approved quotes into invoices.
+                            estimates and update them as projects evolve.
                         </p>
                     </aside>
 
                     <div class="billing-content">
+                        <!-- QUOTES PANEL ONLY -->
                         <section class="billing-panel" data-billing-panel="quotes">
                             <h2>Quotes / Estimates</h2>
 
@@ -122,7 +120,6 @@
                                         </select>
                                         <p class="form-hint">
                                             Choose an existing client saved in the system.
-                                            (Later we can add “new client” from here.)
                                         </p>
                                         <div class="form-error" id="billing-clients-error" hidden></div>
                                     </div>
@@ -149,7 +146,6 @@
                                             You can change quantity and rate for each line.
                                         </p>
                                     </div>
-                                    <div class="form-error" id="billing-items-error" hidden></div>
                                 </div>
 
                                 <div class="table-wrapper">
@@ -182,8 +178,7 @@
                                         <textarea
                                             id="billing-notes"
                                             rows="3"
-                                            placeholder="Special instructions, payment terms, etc.">
-                                        </textarea>
+                                            placeholder="Special instructions, payment terms, etc."></textarea>
                                     </div>
 
                                     <div class="quote-summary">
@@ -194,33 +189,20 @@
                                     </div>
                                 </div>
 
-                                <!-- ACTIONS -->
+                                <!-- ACTIONS (quotes only; no convert button) -->
                                 <div class="billing-actions">
                                     <button type="button"
                                             class="btn secondary"
                                             id="billing-save-draft">
-                                        Save Draft (front-end only)
+                                        Save Draft
                                     </button>
                                     <button type="button"
                                             class="btn"
                                             id="billing-issue-quote">
-                                        Issue Quote (front-end only)
+                                        Issue Quote
                                     </button>
                                 </div>
-
-                                <!-- Optional debug: hides by default -->
-                                <pre id="billing-debug-clients"
-                                    class="debug-output"
-                                    hidden></pre>
                             </div>
-                        </section>
-
-                        <section class="billing-panel" data-billing-panel="invoices" hidden>
-                            <h2>Invoices</h2>
-                            <p>
-                                This panel will show invoice creation and issued invoices, including the
-                                ability to convert quotes into invoices and track payment status.
-                            </p>
                         </section>
                     </div>
                 </div>
